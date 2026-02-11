@@ -14,7 +14,8 @@ def create_employee(emp: EmployeeCreate):
     }):
         raise HTTPException(409, "Employee already exists")
 
-    employee_collection.insert_one(emp.dict())
+    employee_collection.insert_one(emp.model_dump())
+
     return {"message": "Employee added"}
 
 @router.get("")
